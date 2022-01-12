@@ -1,0 +1,17 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jan 12, 2022, 11:00:35 PM
+    Author     : Admin
+*/
+
+.loginField{
+    
+        
+
+}
+.btnLogging{
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #dc143c, #32cd32);
+}
