@@ -1,7 +1,40 @@
 /*
  * Empty Stylesheet file.
  */
-
+*{
+    -fx-font-family: Tahoma;
+}
+Text.Subject{
+    -fx-font-size: 36;
+    -fx-fill: cyan;
+    -fx-stroke-width:3;
+    -fx-stroke : pink;
+    
+}
+VBox {
+    -fx-background-color: lightblue;
+    -fx-padding: 30;
+    -fx-spacing: 10;
+    -fx-alignment:CENTER;
+}
+TextField.InputInfo{
+    -fx-pref-width: 200;
+    -fx-spacing: 40;
+}
+ComboBox{
+    -fx-pref-width: 150;
+}
+TextField,ComboBox{
+   -fx-spacing: 30;
+}
+Button{
+    -fx-alignment: CENTER;
+    -fx-spacing: 50;
+    -fx-background-color: chocolate;
+}
+Hbox.Label{
+    -fx-spacing: 80;
+}
 .mainFxmlClass {
 
 }
