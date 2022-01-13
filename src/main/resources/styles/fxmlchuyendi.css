@@ -1,7 +1,24 @@
 /*
  * Empty Stylesheet file.
  */
+*{
+    -fx-font-family: Tahoma;
+}
+VBox {
+    -fx-background-color: cyan;
+    -fx-padding: 10;
+    -fx-spacing: 10;
+    -fx-alignment: center;
+}
+.t{-fx-font-size: 15px;}
 
+Hbox {
+    -fx-spacing: 10;
+}
+.notice{
+    -fx-font-size: 13px;
+    -fx-alignment: CENTER;
+}
 .mainFxmlClass {
 
 }
