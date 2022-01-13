@@ -1,14 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quanlyvexe.FXMLChuyenDiController">
-    <stylesheets>
-        <URL value="@/styles/fxmlchuyendi.css"/>
-    </stylesheets>
-</AnchorPane>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FROM THÔNG TIN CHUYẾN XE (ADMIN))" />
+      <HBox prefHeight="40.0" prefWidth="600.0">
+         <children>
+            <Label text="Mã chuyến xe:" />
+            <TextField />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="26.0" prefHeight="53.0" prefWidth="600.0">
+         <children>
+            <Label text="Nhập nơi xuất phát:" />
+            <TextField />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="66.0" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Label text="Nhập nơi đến:" />
+            <TextField />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="88.0" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Label text="Nhập vào giá vé:" />
+            <TextField />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="129.0" prefHeight="33.0" prefWidth="600.0">
+         <children>
+            <Label text="Chọn tuyến đi:" />
+            <ComboBox prefHeight="26.0" prefWidth="240.0" promptText="Các tuyến xe:" />
+         </children>
+      </HBox>
+      <HBox layoutX="10.0" layoutY="79.0" prefHeight="50.0" prefWidth="600.0">
+         <children>
+            <Label text="Nhập xe mới:" />
+            <TextField />
+         </children>
+      </HBox>
+      <HBox prefHeight="57.0" prefWidth="600.0">
+         <children>
+            <Label text="Chọn xe:" />
+            <ComboBox prefHeight="26.0" prefWidth="240.0" promptText="Các xe có trong hệ thống:" />
+         </children>
+      </HBox>
+      <TextField promptText="Nhập vào mã chuyến xe" />
+      <TableView prefHeight="200.0" prefWidth="200.0" />
+   </children>
+</VBox>
