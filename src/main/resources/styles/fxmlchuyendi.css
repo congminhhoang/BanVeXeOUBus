@@ -9,15 +9,30 @@ VBox {
     -fx-padding: 10;
     -fx-spacing: 10;
     -fx-alignment: center;
+    -fx-font-size: 20px;
 }
-.t{-fx-font-size: 15px;}
+.t{
+    -fx-font-size: 15px;
+    -fx-pref-width: 130;
+}
+.button{
+     -fx-padding: 10;
+   -fx-alignment: CENTER;
+    -fx-spacing: 10px;
+    -fx-font-size: 18px;
+    
+}
 
 Hbox {
-    -fx-spacing: 10;
+    -fx-spacing: 10px;
 }
 .notice{
     -fx-font-size: 13px;
     -fx-alignment: CENTER;
+    -fx-prefwidth: 150px;
+}
+Label{
+    -fx-spacing: 10px;
 }
 .mainFxmlClass {
 

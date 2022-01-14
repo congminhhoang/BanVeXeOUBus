@@ -1,59 +1,81 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="600.0" stylesheets="@../../../styles/fxmlchuyendi.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FROM THÔNG TIN CHUYẾN XE (ADMIN))" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FORM THÔNG TIN CHUYẾN XE (ADMIN))">
+         <font>
+            <Font name="Times New Roman Bold" size="15.0" />
+         </font></Text>
       <HBox prefHeight="40.0" prefWidth="600.0">
          <children>
-            <Label text="Mã chuyến xe:" />
-            <TextField />
+            <Label prefHeight="19.0" prefWidth="106.0" styleClass="t" text="Mã chuyến xe:" />
+            <TextField prefHeight="24.0" prefWidth="149.0" styleClass="notice" />
          </children>
       </HBox>
-      <HBox layoutX="10.0" layoutY="26.0" prefHeight="53.0" prefWidth="600.0">
+      <HBox layoutX="10.0" layoutY="26.0" prefHeight="24.0" prefWidth="562.0">
          <children>
-            <Label text="Nhập nơi xuất phát:" />
-            <TextField />
+            <Label styleClass="t" text="Nhập nơi khởi hành" textOverrun="CLIP" />
+            <TextField editable="false" prefHeight="24.0" prefWidth="150.0" styleClass="notice">
+               <opaqueInsets>
+                  <Insets right="10.0" />
+               </opaqueInsets></TextField>
+            <Label prefHeight="19.0" prefWidth="101.0" styleClass="t" text="Nhập nơi đến:" textAlignment="CENTER" />
+            <TextField prefHeight="24.0" prefWidth="151.0" styleClass="notice" />
          </children>
       </HBox>
-      <HBox layoutX="10.0" layoutY="66.0" prefHeight="50.0" prefWidth="600.0">
+      <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="66.0" prefHeight="12.0" prefWidth="579.0">
          <children>
-            <Label text="Nhập nơi đến:" />
-            <TextField />
-         </children>
-      </HBox>
-      <HBox layoutX="10.0" layoutY="88.0" prefHeight="50.0" prefWidth="600.0">
-         <children>
-            <Label text="Nhập vào giá vé:" />
-            <TextField />
-         </children>
-      </HBox>
-      <HBox layoutX="10.0" layoutY="129.0" prefHeight="33.0" prefWidth="600.0">
-         <children>
-            <Label text="Chọn tuyến đi:" />
-            <ComboBox prefHeight="26.0" prefWidth="240.0" promptText="Các tuyến xe:" />
+            <Label styleClass="t" text="Nhập giá vé:" textAlignment="JUSTIFY" />
+            <TextField prefHeight="24.0" prefWidth="150.0" styleClass="notice" />
          </children>
       </HBox>
       <HBox layoutX="10.0" layoutY="79.0" prefHeight="50.0" prefWidth="600.0">
          <children>
-            <Label text="Nhập xe mới:" />
-            <TextField />
+            <Label styleClass="t" text="Nhập xe mới:" />
+            <TextField prefHeight="24.0" prefWidth="150.0" styleClass="notice" />
          </children>
       </HBox>
       <HBox prefHeight="57.0" prefWidth="600.0">
          <children>
-            <Label text="Chọn xe:" />
-            <ComboBox prefHeight="26.0" prefWidth="240.0" promptText="Các xe có trong hệ thống:" />
+            <Label prefHeight="19.0" prefWidth="66.0" styleClass="t" text="Chọn xe:" />
+            <ComboBox prefHeight="26.0" prefWidth="232.0" promptText="Các xe có trong hệ thống:" styleClass="notice" />
          </children>
       </HBox>
-      <TextField promptText="Nhập vào mã chuyến xe" />
-      <TableView prefHeight="200.0" prefWidth="200.0" />
+      <HBox prefHeight="57.0" prefWidth="579.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" styleClass="buton" text="Thêm">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" styleClass="buton" text="Sửa">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="177.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="92.0" styleClass="buton" text="Xóa">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Button layoutX="89.0" layoutY="10.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="104.0" styleClass="buton" text="Làm mới">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+         </children>
+      </HBox>
+      <TableView prefHeight="200.0" prefWidth="200.0" styleClass="notice" />
    </children>
 </VBox>
