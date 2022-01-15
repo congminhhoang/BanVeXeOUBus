@@ -7,11 +7,12 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
     Author     : Admin
 */
 
-.loginField{
-    
-        
 
-}
-.btnLogging{
-    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #dc143c, #32cd32);
+Text.Subject{
+   -fx-font-size: 36px;
+    -fx-fill: black;
+    -fx-stroke-width:3;
+    -fx-stroke : #ffc900;
+    -fx-alignment: CENTER;
+    -fx-font-family: Tahoma;
 }
