@@ -146,5 +146,4 @@ public class VeXe {
         this.tenNV = tenNV;
         this.maNV = maNV;
     }
-    
 }
