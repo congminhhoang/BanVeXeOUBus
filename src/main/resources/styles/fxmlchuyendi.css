@@ -28,7 +28,6 @@ Hbox {
 }
 .notice{
     -fx-font-size: 13px;
-    -fx-alignment: CENTER;
     -fx-prefwidth: 150px;
 }
 Label{

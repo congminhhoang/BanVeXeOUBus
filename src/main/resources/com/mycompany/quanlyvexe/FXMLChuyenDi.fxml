@@ -26,7 +26,7 @@
       <HBox layoutX="10.0" layoutY="26.0" prefHeight="24.0" prefWidth="562.0">
          <children>
             <Label styleClass="t" text="Nhập nơi khởi hành" textOverrun="CLIP" />
-            <TextField editable="false" prefHeight="24.0" prefWidth="150.0" styleClass="notice">
+            <TextField prefHeight="24.0" prefWidth="150.0" styleClass="notice">
                <opaqueInsets>
                   <Insets right="10.0" />
                </opaqueInsets></TextField>
