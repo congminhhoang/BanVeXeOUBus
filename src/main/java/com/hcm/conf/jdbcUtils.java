@@ -29,12 +29,12 @@ public class jdbcUtils {
     /**
      * @return the conn
      */
+    
     public static Connection getConn() throws SQLException {
         return DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","root","123456789");
     }
 
-    public static ObservableList<Xe> getConnection() {
+    public static ObservableList<Xe> getListXe() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+    } 
 }

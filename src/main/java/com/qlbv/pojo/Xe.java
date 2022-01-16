@@ -10,7 +10,7 @@ package com.qlbv.pojo;
  * @author USer
  */
 public class Xe {
-    private String MaChuyenXe;
+    private int MaChuyenXe;
     private String ChuyenXe;
     private String NoiDi;
     private String NoiDen;
@@ -20,7 +20,7 @@ public class Xe {
     public Xe() {
     }
 
-    public Xe(String MaChuyenXe, String ChuyenXe, String NoiDi, String NoiDen, String BienSoXe, double GiaVe) {
+    public Xe(int MaChuyenXe, String ChuyenXe, String NoiDi, String NoiDen, String BienSoXe, double GiaVe) {
         this.MaChuyenXe = MaChuyenXe;
         this.ChuyenXe = ChuyenXe;
         this.NoiDi = NoiDi;
@@ -31,20 +31,19 @@ public class Xe {
 
     public Xe(String string) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
-    
+    }
 
     /**
      * @return the MaChuyenXe
      */
-    public String getMaChuyenXe() {
+    public int getMaChuyenXe() {
         return MaChuyenXe;
     }
 
     /**
      * @param MaChuyenXe the MaChuyenXe to set
      */
-    public void setMaChuyenXe(String MaChuyenXe) {
+    public void setMaChuyenXe(int MaChuyenXe) {
         this.MaChuyenXe = MaChuyenXe;
     }
 

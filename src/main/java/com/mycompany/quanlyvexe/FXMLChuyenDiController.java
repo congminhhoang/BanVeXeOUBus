@@ -4,8 +4,9 @@
  */
 package com.mycompany.quanlyvexe;
 
-import com.hcm.conf.jdbcUtils;
+//import com.hcm.conf.jdbcUtils;
 import com.qlbv.pojo.Xe;
+import com.qlbv.services.DV_Xe;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -50,15 +51,14 @@ public class FXMLChuyenDiController implements Initializable {
     @FXML
     private TableView<Xe> table_infoChuyenXe;
     
-    ObservableList<Xe> ListXe;
+    ObservableList<Xe> listXe;
     
     int index = -1;
     
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    
-    
+        
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -69,7 +69,7 @@ public class FXMLChuyenDiController implements Initializable {
         col_BienSo.setCellValueFactory(new PropertyValueFactory<Xe,String>("Biển Số Xe"));
         col_GiaVe.setCellValueFactory(new PropertyValueFactory<Xe,Double>("Giá Vé"));
     
-        ListXe = jdbcUtils.getConnection();
-        table_infoChuyenXe.setItems(ListXe);
+        listXe = DV_Xe.getListXe();
+        table_infoChuyenXe.setItems(listXe);
     }       
 }
