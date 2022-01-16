@@ -84,8 +84,13 @@ public class FXMLVeXeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             this.loadTableView();
-            
-//        col_id.setCellValueFactory(new PropertyValueFactory<VeXe,Integer>("maVe"));
+        try {
+            this.loadTableDate(null);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
+    //        col_id.setCellValueFactory(new PropertyValueFactory<VeXe,Integer>("maVe"));
 //        col_trip.setCellValueFactory(new PropertyValueFactory<VeXe,String>("chuyenXe"));
 //        col_time.setCellValueFactory(new PropertyValueFactory<VeXe, Time>("gioKhoiHanh"));
 //        col_date.setCellValueFactory(new PropertyValueFactory<VeXe, Date>("ngayKhoiHanh"));
@@ -105,29 +110,29 @@ public class FXMLVeXeController implements Initializable {
 //            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
 //        }
 //        
-    }    
     private void loadTableView(){
-        TableColumn colID = new TableColumn("MaVe");
-        colID.setCellValueFactory(new PropertyValueFactory("maVe"));
+        TableColumn colID = new TableColumn("Mã Vé");
+        colID.setCellValueFactory(new PropertyValueFactory("MaVe"));
         
-        TableColumn colChuyenXe = new TableColumn("ChuyenXe");
-        colID.setCellValueFactory(new PropertyValueFactory("chuyenXe"));
+        TableColumn colChuyenXe = new TableColumn("Chuyến Xe");
+        colChuyenXe.setCellValueFactory(new PropertyValueFactory("ChuyenXe"));
         
-        TableColumn colTime = new TableColumn("Gio");
-        colID.setCellValueFactory(new PropertyValueFactory("gioKhoiHanh"));
+        TableColumn colTime = new TableColumn("Giờ");
+        colTime.setCellValueFactory(new PropertyValueFactory("GioKhoiHanh"));
         
-        TableColumn colDate = new TableColumn("Ngay");
-        colID.setCellValueFactory(new PropertyValueFactory("ngayKhoiHanh"));
+        TableColumn colDate = new TableColumn("Ngày");
+        colDate.setCellValueFactory(new PropertyValueFactory("NgayKhoiHanh"));
         
-        TableColumn colName = new TableColumn("TenKH");
-        colID.setCellValueFactory(new PropertyValueFactory("hoTenKH"));
+        TableColumn colName = new TableColumn("Tên KH");
+        colName.setCellValueFactory(new PropertyValueFactory("HoTenKH"));
         
-        TableColumn colbienSo = new TableColumn("BienSo");
-        colID.setCellValueFactory(new PropertyValueFactory("bienSo"));
+        TableColumn colbienSo = new TableColumn("Biển Số");
+        colbienSo.setCellValueFactory(new PropertyValueFactory("BienSoXe"));
+        
         this.table_ticket.getColumns().addAll(colID,colChuyenXe,colTime,colDate,colName,colbienSo);
     }
      private void loadTableDate(String kw) throws SQLException{
          DV_VeXe vx = new DV_VeXe();
-         this.table_ticket.setItems(FXCollections.observableList(vx.getVeXe(kw)));
+         this.table_ticket.setItems(FXCollections.observableList(vx.getListVeXe()));
      }  
 }

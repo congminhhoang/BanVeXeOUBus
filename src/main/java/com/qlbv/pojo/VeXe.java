@@ -17,8 +17,8 @@ public class VeXe {
     private Time gioKhoiHanh;
     private Date ngayKhoiHanh;
     private double giaVe;
-    private String hotenKH;
-    private String bienSo;
+    private String hoTenKH;
+    private String bienSoXe;
 //    private String tenNV;
 //    private int maNV;
 
@@ -95,15 +95,15 @@ public class VeXe {
     /**
      * @return the hotenKH
      */
-    public String getHotenKH() {
-        return hotenKH;
+    public String getHoTenKH() {
+        return hoTenKH;
     }
 
     /**
      * @param hotenKH the hotenKH to set
      */
-    public void setHotenKH(String hotenKH) {
-        this.hotenKH = hotenKH;
+    public void setHoTenKH(String hotenKH) {
+        this.hoTenKH = hotenKH;
     }
 
 //    /**
@@ -143,8 +143,8 @@ public class VeXe {
         this.gioKhoiHanh = gioKhoiHanh;
         this.ngayKhoiHanh = ngayKhoiHanh;
         this.giaVe = giaVe;
-        this.hotenKH = hotenKH;
-        this.bienSo = bienSo;
+        this.hoTenKH = hotenKH;
+        this.bienSoXe = bienSo;
 //        this.tenNV = tenNV;
 //        this.maNV = maNV;
     }
@@ -152,14 +152,14 @@ public class VeXe {
     /**
      * @return the bienSo
      */
-    public String getBienSo() {
-        return bienSo;
+    public String getBienSoXe() {
+        return bienSoXe;
     }
 
     /**
      * @param bienSo the bienSo to set
      */
-    public void setBienSo(String bienSo) {
-        this.bienSo = bienSo;
+    public void setBienSoXe(String bienSo) {
+        this.bienSoXe = bienSo;
     }
 }

@@ -26,7 +26,7 @@ public class DV_VeXe {
     public static Connection ConnectDbVeXe() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe", "root", "123456789");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe", "Luong", "12345678Lu");
             return conn;
         } catch (Exception e) {
             return null;
@@ -43,33 +43,34 @@ public class DV_VeXe {
           
           while(rs.next()){
               listVX.add(new VeXe(Integer.parseInt(rs.getString("MaVe")), rs.getString("ChuyenXe"), 
-                      rs.getTime("Gio"), rs.getDate("Ngay"), rs.getDouble("Gia"), rs.getString("tenKH"),
-                      rs.getString("bienSo")));
+                      rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"),
+                      rs.getString("BienSoXe")));
           }        
       }
-      catch(Exception e){   
+      catch(Exception e){  
+          System.out.println("Cannot Connect" + e.getMessage() );
           
       }  
       return listVX;
        }
-       public List<VeXe> getVeXe(String kw) throws SQLException{
-           List<VeXe> veXe= new ArrayList<>();
-           try(Connection conn = ConnectDbVeXe()){
-               String sql = "SELECT * FROM quanlyvexe.vexe";
-               if(kw != null && !kw.isEmpty())
-                   sql += "WHERE maVe like concat('%', ?, '%')";
-               PreparedStatement stm = conn.prepareStatement(sql);
-               if(kw != null && !kw.isEmpty())
-                   stm.setString(1, kw);
-               
-               ResultSet rs = stm.executeQuery();
-               while(rs.next()){
-                   VeXe q = new VeXe(Integer.parseInt(rs.getString("maVe")), rs.getString("ChuyenXe"), 
-                      rs.getTime("Gio"), rs.getDate("Ngay"), rs.getDouble("Gia"), rs.getString("tenKH"),
-                      rs.getString("bienSo"));
-                   veXe.add(q);
-           }
-           }
-           return veXe;
-       }
+//       public List<VeXe> getVeXe(String kw) throws SQLException{
+//           List<VeXe> veXe= new ArrayList<>();
+//           try(Connection conn = ConnectDbVeXe()){
+//               String sql = "SELECT * FROM quanlyvexe.vexe";
+//               if(kw != null && !kw.isEmpty())
+//                   sql += "WHERE maVe like concat('%', ?, '%')";
+//               PreparedStatement stm = conn.prepareStatement(sql);
+//               if(kw != null && !kw.isEmpty())
+//                   stm.setString(1, kw);
+//               
+//               ResultSet rs = stm.executeQuery();
+//               while(rs.next()){
+//                   VeXe q = new VeXe(Integer.parseInt(rs.getString("MaVe")), rs.getString("ChuyenXe"), 
+//                      rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"),
+//                      rs.getString("BienSoXe"));
+//                   veXe.add(q);}
+//           }
+//           return veXe;
+//       }
+       
 }

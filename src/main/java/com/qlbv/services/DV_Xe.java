@@ -11,9 +11,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -47,20 +44,23 @@ public class DV_Xe {
 //    public static ObservableList<Xe> getConnection() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
 //    }
-  Connection conn = null;
-   public static Connection ConnectDbXe(){
+   Connection conn = null;
+   public static Connection ConnectDbXe() throws SQLException{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","root","123456");
-//            JOptionPane.showMessageDialog(null,"ket noi thanh cong");
+            Connection conn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","Luong","12345678Lu");
+            System.out.println("Connect DbXe Corect");
             return conn;
-        } catch (ClassNotFoundException | SQLException e){
-//            JOptionPane.showMessageDialog(null,"e");
+        } catch (ClassNotFoundException e){
+            System.out.println("Connect DbXe InCorect ClassNotFoundException" + e.getMessage());
+            return null;
+        }catch (SQLException ex){
+            System.out.println("Connect DbXe InCorect SQLException" + ex.getMessage());
             return null;
         }
    }
    
-   public static ObservableList<Xe> getListXe() {
+   public static ObservableList<Xe> getListXe(String info) throws SQLException {
        Connection conn = ConnectDbXe();
        ObservableList<Xe> list = FXCollections.observableArrayList();
        try{
@@ -68,12 +68,14 @@ public class DV_Xe {
            ResultSet rs = ps.executeQuery();
            
            while(rs.next()){
-               list.add(new Xe(Integer.parseInt(rs.getString("MaChuyenXe")),
+               list.add(new Xe(rs.getString("MaChuyenXe"),
                        rs.getString("ChuyenXe"), rs.getString("NoiDi"),
                        rs.getString("NoiDen"), rs.getString("BienSoXe"), 
                        rs.getDouble("GiaVe")));
            }
-       } catch (NumberFormatException | SQLException e) {}
+       } catch (Exception e) {
+       System.out.println("Cannot connect" + e.getMessage() );
+       }
        return list;
    }
 }

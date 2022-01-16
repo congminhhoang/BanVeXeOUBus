@@ -6,7 +6,6 @@ package com.mycompany.quanlyvexe;
 
 //import com.hcm.conf.jdbcUtils;
 import com.qlbv.pojo.Xe;
-import com.qlbv.services.DV_VeXe;
 import com.qlbv.services.DV_Xe;
 import java.net.URL;
 import java.sql.Connection;
@@ -14,6 +13,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -32,41 +33,46 @@ public class FXMLChuyenDiController implements Initializable {
     /**
      * Initializes the controller class.
      */
-    
-      @FXML
-    private TableColumn<Xe, String> col_bienSo;
-
-    @FXML
-    private TableColumn<Xe, String> col_chuyenXe;
-
-    @FXML
-    private TableColumn<Xe, String> col_den;
-
-    @FXML
-    private TableColumn<Xe, String> col_di;
-
-    @FXML
-    private TableColumn<Xe, Double> col_giaVe;
-
-    @FXML
-    private TableColumn<Xe, String> col_idXe;
-
+//    @FXML
+//    private TableColumn<Xe, String> col_bienSo;
+//
+//    @FXML
+//    private TableColumn<Xe, String> col_chuyenXe;
+//
+//    @FXML
+//    private TableColumn<Xe, String> col_den;
+//
+//    @FXML
+//    private TableColumn<Xe, String> col_di;
+//
+//    @FXML
+//    private TableColumn<Xe, Double> col_giaVe;
+//
+//    @FXML
+//    private TableColumn<Xe, String> col_idXe;
+//
     @FXML
     private TableView<Xe> table_InfoChuyenXe;
-    
+
     ObservableList<Xe> listXe;
-    
+
     int index = -1;
-    
+
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-        
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         this.upChuyenXe();
+        
+        try {
+            this.loadTableData(null);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLChuyenDiController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
-         //TODO
+    //TODO
 //        col_maChuyenXe.setCellValueFactory(new PropertyValueFactory<>("MaChuyenXe"));
 //        col_chuyenXe.setCellValueFactory(new PropertyValueFactory<>("ChuyenXe"));
 //        col_den.setCellValueFactory(new PropertyValueFactory<>("NoiDen"));
@@ -76,30 +82,38 @@ public class FXMLChuyenDiController implements Initializable {
 //    
 //        listXe = DV_Xe.getListXe();
 //        table_infoChuyenXe.setItems(listXe);
-        private void upChuyenXe (){
-            TableColumn col_maChuyenXe = new TableColumn("MaChuyenXe");
-            col_maChuyenXe.setCellValueFactory(new PropertyValueFactory("MaChuyenXe"));
 
-            TableColumn col_ChuyenXe = new TableColumn("ChuyenXe");
-            col_chuyenXe.setCellValueFactory(new PropertyValueFactory("chuyenXe"));
+    private void upChuyenXe() {
+        TableColumn col_idXe = new TableColumn("Mã Chuyến Xe");
+        col_idXe.setCellValueFactory(new PropertyValueFactory("MaChuyenXe"));
+        col_idXe.setPrefWidth(180);
 
-            TableColumn col_Den = new TableColumn("NoiDen");
-            col_den.setCellValueFactory(new PropertyValueFactory("den"));
+        TableColumn col_chuyenXe = new TableColumn("Chuyến Xe");
+        col_chuyenXe.setCellValueFactory(new PropertyValueFactory("ChuyenXe"));
+        col_chuyenXe.setPrefWidth(150);
 
-            TableColumn col_Di = new TableColumn("NoiDi");
-            col_di.setCellValueFactory(new PropertyValueFactory("di"));
+        TableColumn col_Di = new TableColumn("Nơi Đi");
+        col_Di.setCellValueFactory(new PropertyValueFactory("NoiDi"));
+        col_Di.setPrefWidth(100);
 
-            TableColumn col_BienSo = new TableColumn("BienSoXe");
-            col_bienSo.setCellValueFactory(new PropertyValueFactory("bienSo"));
+        TableColumn col_Den = new TableColumn("Nơi Đến");
+        col_Den.setCellValueFactory(new PropertyValueFactory("NoiDen"));
+        col_Den.setPrefWidth(100);
 
-            TableColumn col_GiaVe = new TableColumn("GiaVe");
-            col_giaVe.setCellValueFactory(new PropertyValueFactory("GiaVe"));
-            
-            this.table_InfoChuyenXe.getColumns().addAll(col_maChuyenXe,col_chuyenXe,col_den,col_di,col_bienSo,col_giaVe);
+        TableColumn col_bienSo = new TableColumn("Biển Số Xe");
+        col_bienSo.setCellValueFactory(new PropertyValueFactory("BienSoXe"));
+        col_bienSo.setPrefWidth(120);
+
+        TableColumn col_giaVe = new TableColumn("Giá Vé");
+        col_giaVe.setCellValueFactory(new PropertyValueFactory("GiaVe"));
+        col_giaVe.setPrefWidth(100);
+
+        this.table_InfoChuyenXe.getColumns().addAll(col_idXe, col_chuyenXe, col_Den, col_Di, col_bienSo, col_giaVe);
     }
-//     private void loadTableDate(String kw) throws SQLException{
-//         DV_Xe vx = new DV_Xe();
-//         this.table_infoChuyenXe.setItems(FXCollections.observableList(vx.getXe(kw)));
-//     }  
-//    }       
+     private void loadTableData(String info ) throws SQLException{
+         DV_Xe x = new DV_Xe();
+         this.table_InfoChuyenXe.setItems(FXCollections.observableList(DV_Xe.getListXe(info)));
+     }  
 }
+
+

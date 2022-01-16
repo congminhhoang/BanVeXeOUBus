@@ -4,7 +4,6 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -19,7 +18,7 @@
          <font>
             <Font name="Times New Roman Bold" size="15.0" />
          </font></Text>
-      <HBox prefHeight="40.0" prefWidth="600.0">
+      <HBox prefHeight="37.0" prefWidth="742.0">
          <children>
             <Label prefHeight="19.0" prefWidth="106.0" styleClass="t" text="Mã chuyến xe:" />
             <TextField prefHeight="24.0" prefWidth="149.0" styleClass="notice" />
@@ -66,7 +65,7 @@
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="62.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Thêm">
+            <Button fx:id="add" layoutX="62.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Thêm">
                <font>
                   <Font size="10.0" />
                </font>
@@ -78,14 +77,6 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="table_InfoChuyenXe" prefHeight="219.0" prefWidth="579.0" styleClass="notice">
-         <columns>
-            <TableColumn fx:id="col_idXe" prefWidth="115.99999845027924" text="MaChuyenXe" />
-            <TableColumn fx:id="col_chuyenXe" prefWidth="149.59998321533203" text="ChuyenXe" />
-            <TableColumn fx:id="col_den" minWidth="0.0" prefWidth="112.79998779296875" text="NoiDen" />
-            <TableColumn fx:id="col_di" prefWidth="108.800048828125" text="NoiDi" />
-            <TableColumn fx:id="col_bienSo" prefWidth="116.79995727539062" text="BienSoXe" />
-            <TableColumn fx:id="col_giaVe" prefWidth="135.99993896484375" text="GiaVe" />
-         </columns></TableView>
+      <TableView fx:id="table_InfoChuyenXe" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </VBox>

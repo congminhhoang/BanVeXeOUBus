@@ -10,7 +10,7 @@ package com.qlbv.pojo;
  * @author USer
  */
 public class Xe {
-    private int MaChuyenXe;
+    private String MaChuyenXe;
     private String ChuyenXe;
     private String NoiDi;
     private String NoiDen;
@@ -19,7 +19,7 @@ public class Xe {
 
     public Xe() {}
 
-    public Xe(int MaChuyenXe, String ChuyenXe, String NoiDi, String NoiDen, String BienSoXe, double GiaVe) {
+    public Xe(String MaChuyenXe, String ChuyenXe, String NoiDi, String NoiDen, String BienSoXe, double GiaVe) {
         this.MaChuyenXe = MaChuyenXe;
         this.ChuyenXe = ChuyenXe;
         this.NoiDi = NoiDi;
@@ -35,14 +35,14 @@ public class Xe {
     /**
      * @return the MaChuyenXe
      */
-    public int getMaChuyenXe() {
+    public String getMaChuyenXe() {
         return MaChuyenXe;
     }
 
     /**
      * @param MaChuyenXe the MaChuyenXe to set
      */
-    public void setMaChuyenXe(int MaChuyenXe) {
+    public void setMaChuyenXe(String MaChuyenXe) {
         this.MaChuyenXe = MaChuyenXe;
     }
 
