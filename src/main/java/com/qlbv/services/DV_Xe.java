@@ -5,7 +5,6 @@
  */
 package com.qlbv.services;
 //import com.hcm.conf.jdbcUtils;
-import com.hcm.conf.jdbcUtils;
 import com.qlbv.pojo.Xe;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -33,6 +32,14 @@ public class DV_Xe {
 //        try(Connection conn = jdbcUtils.getConn()){
 //            Statement stm = conn.createStatement();
 //            ResultSet rs = stm.executeQuery("SELECT * FROM Xe");
+//        
+//            while (rs.next()){
+//                Xe c = new Xe(rs.getString("MaChuyenXe"));
+//                results.add(c);
+//            }
+//        }
+//        return results;
+//    }
 //            }
 //        
 //        return results;

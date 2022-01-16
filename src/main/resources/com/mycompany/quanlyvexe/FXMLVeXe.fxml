@@ -13,29 +13,28 @@
    <children>
       <AnchorPane prefHeight="538.0" prefWidth="266.0" styleClass="Input">
          <children>
-            <Button layoutX="63.0" layoutY="367.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="123.0" text="Sửa vé" />
+            <Button layoutX="63.0" layoutY="374.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="123.0" text="Sửa vé" />
             <Button layoutX="62.0" layoutY="414.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="123.0" text="Hủy vé" />
-            <Button layoutX="63.0" layoutY="327.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="123.0" text="Đặt vé" />
-            <TextField layoutX="13.0" layoutY="107.0" prefHeight="30.0" prefWidth="234.0" promptText="Nhập vào họ tên" />
-            <TextField layoutX="12.0" layoutY="144.0" prefHeight="30.0" prefWidth="234.0" promptText="Nhập vào số điện thoại" />
+            <Button layoutX="63.0" layoutY="335.0" mnemonicParsing="false" onAction="#themKH" prefHeight="30.0" prefWidth="123.0" text="Đặt vé" />
+            <TextField fx:id="txtHoten" layoutX="16.0" layoutY="154.0" prefHeight="30.0" prefWidth="234.0" promptText="Nhập vào họ tên" />
             <ComboBox layoutX="13.0" layoutY="196.0" prefHeight="28.0" prefWidth="234.0" promptText="Chọn tuyến xe" />
             <Text layoutX="34.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="Subject" text="BÁN VÉ OU" />
             <ComboBox layoutX="13.0" layoutY="237.0" prefHeight="28.0" prefWidth="234.0" promptText="Chọn khung giờ (cố định)" />
             <DatePicker layoutX="12.0" layoutY="274.0" prefHeight="30.0" prefWidth="233.0" promptText="Chọn ngày khởi hành" />
          </children>
       </AnchorPane>
-      <TableView fx:id="table_ticket" layoutX="376.0" layoutY="75.0" prefHeight="432.0" prefWidth="678.0" AnchorPane.rightAnchor="0.0">
+      <TableView fx:id="table_ticket" layoutX="376.0" layoutY="75.0" prefHeight="401.0" prefWidth="678.0" AnchorPane.rightAnchor="0.0">
          <columns>
-            <TableColumn fx:id="col_id" prefWidth="48.000001549720764" text="MaVe" />
-            <TableColumn fx:id="col_name" prefWidth="111.20000457763672" text="TênKH" />
-            <TableColumn fx:id="col_time" prefWidth="66.39996337890625" text="Giờ" />
-            <TableColumn fx:id="col_date" prefWidth="113.60006713867188" text="Ngày khởi hành" />
-            <TableColumn fx:id="col_trip" prefWidth="153.60003662109375" text="Chuyến xe" />
-            <TableColumn fx:id="col_cost" prefWidth="64.80007934570312" text="Giá vé" />
-            <TableColumn fx:id="col_license" prefWidth="112.800048828125" text="Biển số" />
+            <TableColumn prefWidth="48.000001549720764" text="MaVe" />
+            <TableColumn prefWidth="153.60003662109375" text="ChuyenXe" />
+            <TableColumn prefWidth="66.39996337890625" text="Gio" />
+            <TableColumn prefWidth="113.60006713867188" text="Ngay" />
+            <TableColumn prefWidth="64.80007934570312" text="Gia" />
+            <TableColumn prefWidth="111.20000457763672" text="TenKH" />
+            <TableColumn prefWidth="112.800048828125" text="BienSo" />
          </columns></TableView>
-      <TextField layoutX="272.0" layoutY="34.0" prefHeight="30.0" prefWidth="570.0" promptText="Nhập vào mã vé để tìm kiếm" />
-      <Button layoutX="844.0" layoutY="34.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="Tìm kiếm" />
-      <Button layoutX="839.0" layoutY="507.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Xuất vé" />
+      <TextField disable="true" layoutX="272.0" layoutY="34.0" prefHeight="30.0" prefWidth="570.0" promptText="Nhập vào mã vé để tìm kiếm" />
+      <Button disable="true" layoutX="844.0" layoutY="34.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="Tìm kiếm" />
+      <Button disable="true" layoutX="839.0" layoutY="507.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Xuất vé" />
    </children>
 </AnchorPane>

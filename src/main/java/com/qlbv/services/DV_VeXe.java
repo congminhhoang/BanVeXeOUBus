@@ -5,10 +5,71 @@
  */
 package com.qlbv.services;
 
+import com.qlbv.pojo.VeXe;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  *
  * @author USer
  */
 public class DV_VeXe {
+    Connection conn = null;
+    public static Connection ConnectDbVeXe() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe", "root", "123456789");
+            return conn;
+        } catch (Exception e) {
+            return null;
+        }
+        
+    }
     
+       public static ObservableList<VeXe> getListVeXe() throws SQLException {
+      Connection conn = ConnectDbVeXe();
+      ObservableList<VeXe> listVX = FXCollections.observableArrayList();
+      try{
+          PreparedStatement ps = conn.prepareStatement("select * from quanlyvexe.vexe");
+          ResultSet rs = ps.executeQuery();
+          
+          while(rs.next()){
+              listVX.add(new VeXe(Integer.parseInt(rs.getString("MaVe")), rs.getString("ChuyenXe"), 
+                      rs.getTime("Gio"), rs.getDate("Ngay"), rs.getDouble("Gia"), rs.getString("tenKH"),
+                      rs.getString("bienSo")));
+          }        
+      }
+      catch(Exception e){   
+          
+      }  
+      return listVX;
+       }
+       public List<VeXe> getVeXe(String kw) throws SQLException{
+           List<VeXe> veXe= new ArrayList<>();
+           try(Connection conn = ConnectDbVeXe()){
+               String sql = "SELECT * FROM quanlyvexe.vexe";
+               if(kw != null && !kw.isEmpty())
+                   sql += "WHERE maVe like concat('%', ?, '%')";
+               PreparedStatement stm = conn.prepareStatement(sql);
+               if(kw != null && !kw.isEmpty())
+                   stm.setString(1, kw);
+               
+               ResultSet rs = stm.executeQuery();
+               while(rs.next()){
+                   VeXe q = new VeXe(Integer.parseInt(rs.getString("maVe")), rs.getString("ChuyenXe"), 
+                      rs.getTime("Gio"), rs.getDate("Ngay"), rs.getDouble("Gia"), rs.getString("tenKH"),
+                      rs.getString("bienSo"));
+                   veXe.add(q);
+           }
+           }
+           return veXe;
+       }
 }
