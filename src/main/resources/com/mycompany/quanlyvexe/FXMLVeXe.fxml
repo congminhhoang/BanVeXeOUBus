@@ -24,7 +24,7 @@
       </AnchorPane>
       <TextField disable="true" layoutX="272.0" layoutY="34.0" prefHeight="30.0" prefWidth="570.0" promptText="Nhập vào mã vé để tìm kiếm" />
       <Button disable="true" layoutX="844.0" layoutY="34.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="95.0" text="Tìm kiếm" />
-      <Button disable="true" layoutX="839.0" layoutY="507.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Xuất vé" />
+      <Button disable="true" layoutX="789.0" layoutY="502.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="106.0" text="Xuất vé" />
       <TableView fx:id="table_ticket" layoutX="272.0" layoutY="62.0" prefHeight="440.0" prefWidth="626.0" />
    </children>
 </AnchorPane>

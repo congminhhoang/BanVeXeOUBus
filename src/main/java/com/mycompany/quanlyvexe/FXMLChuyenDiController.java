@@ -19,8 +19,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 /**
@@ -51,6 +55,24 @@ public class FXMLChuyenDiController implements Initializable {
 //    @FXML
 //    private TableColumn<Xe, String> col_idXe;
 //
+     @FXML
+    private Button add;
+
+    @FXML
+    private ComboBox<?> combo_bienSoXe;
+    
+    @FXML
+    private TextField txt_IdXe;
+
+    @FXML
+    private Label txt_den;
+
+    @FXML
+    private TextField txt_di;
+
+    @FXML
+    private TextField txt_giaVe;
+    
     @FXML
     private TableView<Xe> table_InfoChuyenXe;
 
@@ -61,6 +83,12 @@ public class FXMLChuyenDiController implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
+    
+    public void add_data() throws SQLException{
+        conn = DV_Xe.ConnectDbXe();
+        String sql = "insert into Database (MaChuyenXe, ChuyenXe, NoiDi, NoiDen, BienSoXe, GiaVe)values(?,?,?,?,?,?)";
+        
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
