@@ -6,4 +6,5 @@ module com.mycompany.quanlyvexe {
 
     opens com.mycompany.quanlyvexe to javafx.fxml;
     exports com.mycompany.quanlyvexe;
+    exports com.qlbv.pojo;
 }

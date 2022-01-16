@@ -18,8 +18,9 @@ public class VeXe {
     private Date ngayKhoiHanh;
     private double giaVe;
     private String hotenKH;
-    private String tenNV;
-    private int maNV;
+    private String bienSo;
+//    private String tenNV;
+//    private int maNV;
 
     /**
      * @return the maVe
@@ -105,45 +106,60 @@ public class VeXe {
         this.hotenKH = hotenKH;
     }
 
-    /**
-     * @return the tenNV
-     */
-    public String getTenNV() {
-        return tenNV;
-    }
-
-    /**
-     * @param tenNV the tenNV to set
-     */
-    public void setTenNV(String tenNV) {
-        this.tenNV = tenNV;
-    }
-
-    /**
-     * @return the maNV
-     */
-    public int getMaNV() {
-        return maNV;
-    }
-
-    /**
-     * @param maNV the maNV to set
-     */
-    public void setMaNV(int maNV) {
-        this.maNV = maNV;
-    }
+//    /**
+//     * @return the tenNV
+//     */
+//    public String getTenNV() {
+//        return tenNV;
+//    }
+//
+//    /**
+//     * @param tenNV the tenNV to set
+//     */
+//    public void setTenNV(String tenNV) {
+//        this.tenNV = tenNV;
+//    }
+//
+//    /**
+//     * @return the maNV
+//     */
+//    public int getMaNV() {
+//        return maNV;
+//    }
+//
+//    /**
+//     * @param maNV the maNV to set
+//     */
+//    public void setMaNV(int maNV) {
+//        this.maNV = maNV;
+//    }
     public VeXe(){
         
     }
 
-    public VeXe(int maVe, String chuyenXe, Time gioKhoiHanh, Date ngayKhoiHanh, double giaVe, String hotenKH, String tenNV, int maNV) {
+    public VeXe(int maVe, String chuyenXe, Time gioKhoiHanh, Date ngayKhoiHanh, double giaVe, String hotenKH, String bienSo) {
         this.maVe = maVe;
         this.chuyenXe = chuyenXe;
         this.gioKhoiHanh = gioKhoiHanh;
         this.ngayKhoiHanh = ngayKhoiHanh;
         this.giaVe = giaVe;
         this.hotenKH = hotenKH;
-        this.tenNV = tenNV;
-        this.maNV = maNV;
+        this.bienSo = bienSo;
+//        this.tenNV = tenNV;
+//        this.maNV = maNV;
+    }
+
+    /**
+     * @return the bienSo
+     */
+    public String getBienSo() {
+        return bienSo;
+    }
+
+    /**
+     * @param bienSo the bienSo to set
+     */
+    public void setBienSo(String bienSo) {
+        this.bienSo = bienSo;
     }
 }

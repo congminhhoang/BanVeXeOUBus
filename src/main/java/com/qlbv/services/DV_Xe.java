@@ -32,6 +32,14 @@ public class DV_Xe {
 //        try(Connection conn = jdbcUtils.getConn()){
 //            Statement stm = conn.createStatement();
 //            ResultSet rs = stm.executeQuery("SELECT * FROM Xe");
+//        
+//            while (rs.next()){
+//                Xe c = new Xe(rs.getString("MaChuyenXe"));
+//                results.add(c);
+//            }
+//        }
+//        return results;
+//    }
 //            }
 //        
 //        return results;
@@ -43,7 +51,7 @@ public class DV_Xe {
    public static Connection ConnectDbXe(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","root","123456");
+            Connection conn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","root","123456");
 //            JOptionPane.showMessageDialog(null,"ket noi thanh cong");
             return conn;
         } catch (ClassNotFoundException | SQLException e){
@@ -52,7 +60,7 @@ public class DV_Xe {
         }
    }
    
-   public static ObservableList<Xe> getListXe(){
+   public static ObservableList<Xe> getListXe() {
        Connection conn = ConnectDbXe();
        ObservableList<Xe> list = FXCollections.observableArrayList();
        try{

@@ -80,12 +80,12 @@
       </AnchorPane>
       <TableView fx:id="table_InfoChuyenXe" prefHeight="219.0" prefWidth="579.0" styleClass="notice">
          <columns>
-            <TableColumn fx:id="col_maChuyenXe" prefWidth="115.99999845027924" text="Mã Chuyến Xe" />
-            <TableColumn fx:id="col_chuyenXe" prefWidth="149.59998321533203" text="Chuyến Xe" />
-            <TableColumn fx:id="col_den" minWidth="0.0" prefWidth="112.79998779296875" text="Nơi Đến" />
-            <TableColumn fx:id="col_di" prefWidth="108.800048828125" text="Nơi đi" />
-            <TableColumn fx:id="col_BienSo" prefWidth="116.79995727539062" text="Biến Số Xe" />
-            <TableColumn fx:id="col_GiaVe" prefWidth="135.99993896484375" text="Giá Vé" />
+            <TableColumn fx:id="col_idXe" prefWidth="115.99999845027924" text="MaChuyenXe" />
+            <TableColumn fx:id="col_chuyenXe" prefWidth="149.59998321533203" text="ChuyenXe" />
+            <TableColumn fx:id="col_den" minWidth="0.0" prefWidth="112.79998779296875" text="NoiDen" />
+            <TableColumn fx:id="col_di" prefWidth="108.800048828125" text="NoiDi" />
+            <TableColumn fx:id="col_bienSo" prefWidth="116.79995727539062" text="BienSoXe" />
+            <TableColumn fx:id="col_giaVe" prefWidth="135.99993896484375" text="GiaVe" />
          </columns></TableView>
    </children>
 </VBox>
