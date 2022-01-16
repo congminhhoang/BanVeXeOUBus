@@ -5,7 +5,6 @@
  */
 package com.qlbv.services;
 //import com.hcm.conf.jdbcUtils;
-import com.hcm.conf.jdbcUtils;
 import com.qlbv.pojo.Xe;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -44,7 +43,7 @@ public class DV_Xe {
    public static Connection ConnectDbXe(){
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/QuanLyVeXe","root","123456");
+            Connection conn = DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","root","123456");
 //            JOptionPane.showMessageDialog(null,"ket noi thanh cong");
             return conn;
         } catch (ClassNotFoundException | SQLException e){
@@ -57,7 +56,7 @@ public class DV_Xe {
        Connection conn = ConnectDbXe();
        ObservableList<Xe> list = FXCollections.observableArrayList();
        try{
-           PreparedStatement ps = conn.prepareStatement("select * from Xe");
+           PreparedStatement ps = conn.prepareStatement("SELECT * FROM quanlyvexe.xe");
            ResultSet rs = ps.executeQuery();
            
            while(rs.next()){
@@ -66,8 +65,7 @@ public class DV_Xe {
                        rs.getString("NoiDen"), rs.getString("BienSoXe"), 
                        rs.getDouble("GiaVe")));
            }
-       } catch (NumberFormatException | SQLException e) {
-       }
+       } catch (NumberFormatException | SQLException e) {}
        return list;
    }
 }

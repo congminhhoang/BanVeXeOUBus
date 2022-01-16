@@ -13,7 +13,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox stylesheets="@../../../styles/fxmlchuyendi.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quanlyvexe.FXMLChuyenDiController">
+<VBox prefHeight="554.0" prefWidth="762.0" stylesheets="@../../../styles/fxmlchuyendi.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quanlyvexe.FXMLChuyenDiController">
    <children>
       <Text lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FORM THÔNG TIN CHUYẾN XE (ADMIN))">
          <font>
@@ -48,7 +48,7 @@
             <TextField disable="true" editable="false" prefHeight="24.0" prefWidth="150.0" styleClass="notice" />
          </children>
       </HBox>
-      <HBox prefHeight="58.0" prefWidth="865.0">
+      <HBox>
          <children>
             <Label prefHeight="19.0" prefWidth="69.0" styleClass="t" text="Chọn xe:" textAlignment="JUSTIFY" />
             <ComboBox prefHeight="26.0" prefWidth="232.0" promptText="Các xe có trong hệ thống:" styleClass="notice" />

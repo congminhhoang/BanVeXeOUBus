@@ -12,15 +12,15 @@ import java.io.IOException;
  * JavaFX App
  */
 public class App extends Application {
-
+ 
     private static Scene scene;
 
     @Override
     public void start(Stage stage) throws IOException {
 
-        scene = new Scene(loadFXML("FXMLChuyenDi"));
-
-        scene = new Scene(loadFXML("FXMLlogin"));
+          scene = new Scene(loadFXML("FXMLChuyenDi"));
+//          scene = new Scene(loadFXML("FXMLVeXe"));
+//          scene = new Scene(loadFXML("FXMLlogin"));
 
         stage.setScene(scene);
         stage.show();

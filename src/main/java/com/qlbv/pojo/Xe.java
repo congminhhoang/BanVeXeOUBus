@@ -17,8 +17,7 @@ public class Xe {
     private String BienSoXe;
     private double GiaVe;
 
-    public Xe() {
-    }
+    public Xe() {}
 
     public Xe(int MaChuyenXe, String ChuyenXe, String NoiDi, String NoiDen, String BienSoXe, double GiaVe) {
         this.MaChuyenXe = MaChuyenXe;

@@ -61,13 +61,13 @@ public class FXMLChuyenDiController implements Initializable {
         
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-        col_maChuyenXe.setCellValueFactory(new PropertyValueFactory<Xe,String>("Mã Chuyến Xe"));
-        col_chuyenXe.setCellValueFactory(new PropertyValueFactory<Xe,String>("Chuyến Xe"));
-        col_den.setCellValueFactory(new PropertyValueFactory<Xe,String>("Nơi Đến"));
-        col_di.setCellValueFactory(new PropertyValueFactory<Xe,String>("Nơi Đi"));
-        col_BienSo.setCellValueFactory(new PropertyValueFactory<Xe,String>("Biển Số Xe"));
-        col_GiaVe.setCellValueFactory(new PropertyValueFactory<Xe,Double>("Giá Vé"));
+         //TODO
+        col_maChuyenXe.setCellValueFactory(new PropertyValueFactory<>("MaChuyenXe"));
+        col_chuyenXe.setCellValueFactory(new PropertyValueFactory<>("ChuyenXe"));
+        col_den.setCellValueFactory(new PropertyValueFactory<>("NoiDen"));
+        col_di.setCellValueFactory(new PropertyValueFactory<>("NoiDi"));
+        col_BienSo.setCellValueFactory(new PropertyValueFactory<>("BienSoXe"));
+        col_GiaVe.setCellValueFactory(new PropertyValueFactory<>("Giave"));
     
         listXe = DV_Xe.getListXe();
         table_infoChuyenXe.setItems(listXe);
