@@ -26,7 +26,7 @@ public class DV_VeXe {
     public static Connection ConnectDbVeXe() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe", "Luong", "12345678Lu");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe", "congminh", "123456789Minh");
             return conn;
         } catch (Exception e) {
             return null;
@@ -42,9 +42,8 @@ public class DV_VeXe {
           ResultSet rs = ps.executeQuery();
           
           while(rs.next()){
-              listVX.add(new VeXe(Integer.parseInt(rs.getString("MaVe")), rs.getString("ChuyenXe"), 
-                      rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"),
-                      rs.getString("BienSoXe")));
+              listVX.add(new VeXe(Integer.parseInt(rs.getString("MaVe")), 
+                       rs.getString("ChuyenXe"), rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"), rs.getString("BienSoXe")));
           }        
       }
       catch(Exception e){  

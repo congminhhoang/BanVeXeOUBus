@@ -48,7 +48,7 @@ public class DV_Xe {
    public static Connection ConnectDbXe() throws SQLException{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","Luong","12345678Lu");
+            Connection conn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","congminh","123456789Minh");
             System.out.println("Connect DbXe Corect");
             return conn;
         } catch (ClassNotFoundException e){
