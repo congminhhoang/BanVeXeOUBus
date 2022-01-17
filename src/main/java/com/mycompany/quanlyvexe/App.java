@@ -20,9 +20,9 @@ public class App extends Application {
 //        scene = new Scene(loadFXML("FXMLVeXe"));
 
 
-//          scene = new Scene(loadFXML("FXMLChuyenDi"));
+          scene = new Scene(loadFXML("FXMLChuyenDi"));
 //          scene = new Scene(loadFXML("FXMLVeXe"));
-            scene = new Scene(loadFXML("FXMLlogin"));
+//            scene = new Scene(loadFXML("FXMLlogin"));
         stage.setScene(scene);
         stage.show();
     }

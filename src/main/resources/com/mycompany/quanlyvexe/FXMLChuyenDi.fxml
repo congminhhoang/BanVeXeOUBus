@@ -14,14 +14,16 @@
 
 <VBox prefHeight="554.0" prefWidth="762.0" stylesheets="@../../../styles/fxmlchuyendi.css" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.quanlyvexe.FXMLChuyenDiController">
    <children>
-      <Text lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FORM THÔNG TIN CHUYẾN XE (ADMIN))">
+      <Text lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="FORM THÔNG TIN CHUYẾN XE (ADMIN)">
          <font>
-            <Font name="Times New Roman Bold" size="15.0" />
+            <Font name="Tahoma Bold" size="25.0" />
          </font></Text>
-      <HBox prefHeight="37.0" prefWidth="742.0">
+      <HBox prefHeight="28.0" prefWidth="742.0">
          <children>
             <Label prefHeight="19.0" prefWidth="106.0" styleClass="t" text="Mã chuyến xe:" />
             <TextField fx:id="txt_IdXe" prefHeight="24.0" prefWidth="149.0" promptText="Mã Chuyến Xe" styleClass="notice" />
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="19.0" prefWidth="69.0" styleClass="t" text="Chọn xe:" textAlignment="CENTER" />
+            <ComboBox fx:id="combo_bienSoXe" prefHeight="26.0" prefWidth="211.0" promptText="Các xe có trong hệ thống" styleClass="notice" />
          </children>
       </HBox>
       <HBox layoutX="10.0" layoutY="26.0" prefHeight="24.0" prefWidth="562.0">
@@ -31,8 +33,8 @@
                <opaqueInsets>
                   <Insets right="10.0" />
                </opaqueInsets></TextField>
-            <Label fx:id="txt_den" alignment="CENTER" contentDisplay="TOP" prefHeight="19.0" prefWidth="164.0" styleClass="t" text="Nơi Đến:" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true" />
-            <TextField prefHeight="24.0" prefWidth="151.0" promptText="Nơi Đến" styleClass="notice" />
+            <Label alignment="CENTER" contentDisplay="TOP" prefHeight="19.0" prefWidth="164.0" styleClass="t" text="Nơi Đến:" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true" />
+            <TextField fx:id="txt_den" prefHeight="24.0" prefWidth="151.0" promptText="Nơi Đến" styleClass="notice" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="66.0" prefHeight="12.0" prefWidth="579.0">
@@ -41,26 +43,19 @@
             <TextField fx:id="txt_giaVe" prefHeight="24.0" prefWidth="150.0" promptText="Số tiền" styleClass="notice" />
          </children>
       </HBox>
-      <HBox layoutX="10.0" layoutY="79.0" prefHeight="30.0" prefWidth="742.0">
-         <children>
-            <Label contentDisplay="CENTER" prefHeight="19.0" prefWidth="69.0" styleClass="t" text="Chọn xe:" textAlignment="JUSTIFY" />
-            <ComboBox fx:id="combo_bienSoXe" prefHeight="26.0" prefWidth="232.0" promptText="Các xe có trong hệ thống:" styleClass="notice" />
-         </children>
-      </HBox>
-      <HBox />
       <AnchorPane prefHeight="46.0" prefWidth="742.0">
          <children>
-            <Button layoutX="410.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Xóa">
+            <Button fx:id="del_data" layoutX="410.0" layoutY="3.0" mnemonicParsing="false" onAction="#del_data" prefHeight="38.0" prefWidth="79.0" text="Xóa">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button fx:id="add_" layoutX="178.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Thêm">
+            <Button fx:id="add_data" layoutX="178.0" layoutY="3.0" mnemonicParsing="false" onAction="#add_data" prefHeight="38.0" prefWidth="79.0" text="Thêm">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="291.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Sửa">
+            <Button layoutX="291.0" layoutY="3.0" mnemonicParsing="false" onAction="#edit_data" prefHeight="38.0" prefWidth="79.0" text="Sửa">
                <font>
                   <Font size="10.0" />
                </font>
@@ -72,6 +67,9 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="table_InfoChuyenXe" prefHeight="266.0" prefWidth="742.0" />
+      <TableView fx:id="table_InfoChuyenXe" onMouseClicked="#getSelected" prefHeight="325.0" prefWidth="742.0" stylesheets="@../../../styles/fxmlchuyendi.css">
+         <columnResizePolicy>
+            <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+         </columnResizePolicy></TableView>
    </children>
 </VBox>
