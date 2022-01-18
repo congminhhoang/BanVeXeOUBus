@@ -19,13 +19,12 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 
 /**
  * FXML Controller class
@@ -37,44 +36,30 @@ public class FXMLChuyenDiController implements Initializable {
     /**
      * Initializes the controller class.
      */
-//    @FXML
-//    private TableColumn<Xe, String> col_bienSo;
-//
-//    @FXML
-//    private TableColumn<Xe, String> col_chuyenXe;
-//
-//    @FXML
-//    private TableColumn<Xe, String> col_den;
-//
-//    @FXML
-//    private TableColumn<Xe, String> col_di;
-//
-//    @FXML
-//    private TableColumn<Xe, Double> col_giaVe;
-//
-//    @FXML
-//    private TableColumn<Xe, String> col_idXe;
-//
-     @FXML
-    private Button add;
 
     @FXML
-    private ComboBox<?> combo_bienSoXe;
-    
+    private ComboBox<Xe> combo_bienSoXe;
+
     @FXML
     private TextField txt_IdXe;
 
     @FXML
-    private Label txt_den;
+    private TextField txt_den;
 
     @FXML
     private TextField txt_di;
 
     @FXML
     private TextField txt_giaVe;
-    
+
     @FXML
     private TableView<Xe> table_InfoChuyenXe;
+
+    TableColumn col_idXe;
+    TableColumn col_Den;
+    TableColumn col_Di;
+    TableColumn col_bienSo;
+    TableColumn col_giaVe;
 
     ObservableList<Xe> listXe;
 
@@ -83,65 +68,126 @@ public class FXMLChuyenDiController implements Initializable {
     Connection conn = null;
     ResultSet rs = null;
     PreparedStatement pst = null;
-    
-    public void add_data() throws SQLException{
+    //tác động trong giao diện
+    @FXML
+    void getSelected(MouseEvent event) {
+        index = table_InfoChuyenXe.getSelectionModel().getSelectedIndex();
+        if (index <= -1) {
+            return;
+        }
+        txt_IdXe.setText(col_idXe.getCellData(index).toString());
+
+        txt_den.setText(col_Den.getCellData(index).toString());
+        txt_di.setText(col_Di.getCellData(index).toString());
+
+        txt_giaVe.setText(col_giaVe.getCellData(index).toString());
+    }
+
+    //Them Chuyen Di
+    public void add_data() throws SQLException {
         conn = DV_Xe.ConnectDbXe();
-        String sql = "insert into Database (MaChuyenXe, ChuyenXe, NoiDi, NoiDen, BienSoXe, GiaVe)values(?,?,?,?,?,?)";
-        
+        String sql = "insert into xe (MaChuyenXe, NoiDi, NoiDen, GiaVe)values(?,?,?,?)";
+        try {
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, txt_IdXe.getText());
+            pst.setString(2, txt_den.getText());
+            pst.setString(3, txt_di.getText());
+//            this.combo_bienSoXe.getSelectionModel().getSelectedItem().getBienSoXe();
+            pst.setString(4, txt_giaVe.getText());
+            pst.execute();
+
+            display();
+
+        } catch (Exception e) {
+            System.out.println("Cant ADD " + e.getMessage());
+        }
+    }
+
+//    Sửa Chuyến đi
+    public void edit_data() {
+        try {
+            conn = DV_Xe.ConnectDbXe();
+            String MaChuyenXe = txt_IdXe.getText();
+            String noiDi = txt_di.getText();
+            String noiDen = txt_den.getText();
+            String giaVe = txt_giaVe.getText();
+
+            String sql1 = "update xe set MaChuyenXe = '" + MaChuyenXe + "',NoiDi = '" + noiDi + "',NoiDen = '"
+                    + noiDen + "',GiaVe = '" + giaVe + "' where MaChuyenXe= '" + MaChuyenXe + "' ";
+            pst = conn.prepareStatement(sql1);
+
+            pst.execute();
+
+            display();
+
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    // Xoa Chuyen di
+    public void del_data() throws SQLException {
+        try {
+            conn = DV_Xe.ConnectDbXe();
+            String sql = "DELETE FROM xe where MaChuyenXe = ? ";
+            pst = conn.prepareStatement(sql);
+            pst.setString(1, txt_IdXe.getText());
+//            pst.setString(2, txt_den.getText());
+//            pst.setString(3, txt_di.getText());
+//            pst.setString(4, txt_giaVe.getText());
+            pst.execute();
+
+            display();
+
+        } catch (Exception e) {
+            System.out.println("Can't delete " + e.getMessage());
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        this.upChuyenXe();
-        
-        try {
-            this.loadTableData(null);
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLChuyenDiController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        //TODO
+        display();
     }
-    //TODO
-//        col_maChuyenXe.setCellValueFactory(new PropertyValueFactory<>("MaChuyenXe"));
-//        col_chuyenXe.setCellValueFactory(new PropertyValueFactory<>("ChuyenXe"));
-//        col_den.setCellValueFactory(new PropertyValueFactory<>("NoiDen"));
-//        col_di.setCellValueFactory(new PropertyValueFactory<>("NoiDi"));
-//        col_BienSo.setCellValueFactory(new PropertyValueFactory<>("BienSoXe"));
-//        col_GiaVe.setCellValueFactory(new PropertyValueFactory<>("Giave"));
-//    
-//        listXe = DV_Xe.getListXe();
-//        table_infoChuyenXe.setItems(listXe);
 
     private void upChuyenXe() {
         TableColumn col_idXe = new TableColumn("Mã Chuyến Xe");
         col_idXe.setCellValueFactory(new PropertyValueFactory("MaChuyenXe"));
         col_idXe.setPrefWidth(180);
 
-        TableColumn col_chuyenXe = new TableColumn("Chuyến Xe");
-        col_chuyenXe.setCellValueFactory(new PropertyValueFactory("ChuyenXe"));
-        col_chuyenXe.setPrefWidth(150);
-
+//        TableColumn col_chuyenXe = new TableColumn("Chuyến Xe");
+//        col_chuyenXe.setCellValueFactory(new PropertyValueFactory("ChuyenXe"));
+//        col_chuyenXe.setPrefWidth(150);
         TableColumn col_Di = new TableColumn("Nơi Đi");
         col_Di.setCellValueFactory(new PropertyValueFactory("NoiDi"));
-        col_Di.setPrefWidth(100);
+        col_Di.setPrefWidth(150);
 
         TableColumn col_Den = new TableColumn("Nơi Đến");
         col_Den.setCellValueFactory(new PropertyValueFactory("NoiDen"));
-        col_Den.setPrefWidth(100);
+        col_Den.setPrefWidth(150);
 
         TableColumn col_bienSo = new TableColumn("Biển Số Xe");
         col_bienSo.setCellValueFactory(new PropertyValueFactory("BienSoXe"));
-        col_bienSo.setPrefWidth(120);
+        col_bienSo.setPrefWidth(150);
 
         TableColumn col_giaVe = new TableColumn("Giá Vé");
         col_giaVe.setCellValueFactory(new PropertyValueFactory("GiaVe"));
         col_giaVe.setPrefWidth(100);
 
-        this.table_InfoChuyenXe.getColumns().addAll(col_idXe, col_chuyenXe, col_Den, col_Di, col_bienSo, col_giaVe);
+        this.table_InfoChuyenXe.getColumns().addAll(col_idXe, col_Den, col_Di, col_bienSo, col_giaVe);
     }
-     private void loadTableData(String info ) throws SQLException{
-         DV_Xe x = new DV_Xe();
-         this.table_InfoChuyenXe.setItems(FXCollections.observableList(DV_Xe.getListXe(info)));
-     }  
+
+    private void loadTableData(String info) throws SQLException {
+        DV_Xe x = new DV_Xe();
+        this.table_InfoChuyenXe.setItems(FXCollections.observableList(DV_Xe.getListXe(info)));
+    }
+
+    public void display() {
+        this.upChuyenXe();
+        try {
+            this.loadTableData(null);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLChuyenDiController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
-
-
