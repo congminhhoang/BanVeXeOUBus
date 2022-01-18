@@ -17,9 +17,18 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
+<<<<<<< HEAD
         scene = new Scene(loadFXML("FXMLVeXe"));
         scene = new Scene(loadFXML("FXMLChuyenDi"));
         scene = new Scene(loadFXML("FXMLlogin"));
+=======
+//        scene = new Scene(loadFXML("FXMLVeXe"));
+
+
+//          scene = new Scene(loadFXML("FXMLChuyenDi"));
+//          scene = new Scene(loadFXML("FXMLVeXe"));
+            scene = new Scene(loadFXML("FXMLlogin"));
+>>>>>>> b3debd0f08734148783b63c9f699b3d664ba465d
         stage.setScene(scene);
         stage.show();
     }
@@ -36,4 +45,6 @@ public class App extends Application {
     public static void main(String[] args) {
         launch();
     }
+    
+    
 }

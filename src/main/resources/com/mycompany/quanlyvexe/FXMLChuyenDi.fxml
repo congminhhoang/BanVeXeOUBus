@@ -21,62 +21,57 @@
       <HBox prefHeight="37.0" prefWidth="742.0">
          <children>
             <Label prefHeight="19.0" prefWidth="106.0" styleClass="t" text="Mã chuyến xe:" />
-            <TextField prefHeight="24.0" prefWidth="149.0" styleClass="notice" />
+            <TextField fx:id="txt_IdXe" prefHeight="24.0" prefWidth="149.0" promptText="Mã Chuyến Xe" styleClass="notice" />
          </children>
       </HBox>
       <HBox layoutX="10.0" layoutY="26.0" prefHeight="24.0" prefWidth="562.0">
          <children>
-            <Label styleClass="t" text="Nhập nơi khởi hành" textOverrun="CLIP" />
-            <TextField prefHeight="24.0" prefWidth="150.0" styleClass="notice">
+            <Label styleClass="t" text="Nơi Đi:" textOverrun="CLIP" />
+            <TextField fx:id="txt_di" prefHeight="24.0" prefWidth="150.0" promptText="Nơi đi" styleClass="notice">
                <opaqueInsets>
                   <Insets right="10.0" />
                </opaqueInsets></TextField>
-            <Label alignment="CENTER" contentDisplay="TOP" prefHeight="19.0" prefWidth="164.0" styleClass="t" text="Nhập nơi đến:" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true" />
-            <TextField prefHeight="24.0" prefWidth="151.0" styleClass="notice" />
+            <Label fx:id="txt_den" alignment="CENTER" contentDisplay="TOP" prefHeight="19.0" prefWidth="164.0" styleClass="t" text="Nơi Đến:" textAlignment="JUSTIFY" textOverrun="CLIP" wrapText="true" />
+            <TextField prefHeight="24.0" prefWidth="151.0" promptText="Nơi Đến" styleClass="notice" />
          </children>
       </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="66.0" prefHeight="12.0" prefWidth="579.0">
          <children>
             <Label styleClass="t" text="Nhập giá vé:" textAlignment="JUSTIFY" />
-            <TextField prefHeight="24.0" prefWidth="150.0" styleClass="notice" />
+            <TextField fx:id="txt_giaVe" prefHeight="24.0" prefWidth="150.0" promptText="Số tiền" styleClass="notice" />
          </children>
       </HBox>
-      <HBox layoutX="10.0" layoutY="79.0" prefHeight="50.0" prefWidth="600.0">
+      <HBox layoutX="10.0" layoutY="79.0" prefHeight="30.0" prefWidth="742.0">
          <children>
-            <Label disable="true" styleClass="t" text="Nhập xe mới:" />
-            <TextField disable="true" editable="false" prefHeight="24.0" prefWidth="150.0" styleClass="notice" />
+            <Label contentDisplay="CENTER" prefHeight="19.0" prefWidth="69.0" styleClass="t" text="Chọn xe:" textAlignment="JUSTIFY" />
+            <ComboBox fx:id="combo_bienSoXe" prefHeight="26.0" prefWidth="232.0" promptText="Các xe có trong hệ thống:" styleClass="notice" />
          </children>
       </HBox>
-      <HBox>
+      <HBox />
+      <AnchorPane prefHeight="46.0" prefWidth="742.0">
          <children>
-            <Label prefHeight="19.0" prefWidth="69.0" styleClass="t" text="Chọn xe:" textAlignment="JUSTIFY" />
-            <ComboBox prefHeight="26.0" prefWidth="232.0" promptText="Các xe có trong hệ thống:" styleClass="notice" />
-         </children>
-      </HBox>
-      <AnchorPane prefHeight="58.0" prefWidth="579.0">
-         <children>
-            <Button layoutX="404.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Làm Mới">
+            <Button layoutX="410.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Xóa">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="290.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Xóa">
+            <Button fx:id="add_" layoutX="178.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Thêm">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button fx:id="add" layoutX="62.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Thêm">
+            <Button layoutX="291.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Sửa">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
-            <Button layoutX="173.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Sửa">
+            <Button layoutX="520.0" layoutY="3.0" mnemonicParsing="false" prefHeight="38.0" prefWidth="79.0" text="Làm Mới">
                <font>
                   <Font size="10.0" />
                </font>
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="table_InfoChuyenXe" prefHeight="200.0" prefWidth="200.0" />
+      <TableView fx:id="table_InfoChuyenXe" prefHeight="266.0" prefWidth="742.0" />
    </children>
 </VBox>
