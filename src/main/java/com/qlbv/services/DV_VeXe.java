@@ -11,9 +11,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Queue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -22,36 +19,41 @@ import javafx.collections.ObservableList;
  * @author USer
  */
 public class DV_VeXe {
+
     Connection conn = null;
+
     public static Connection ConnectDbVeXe() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe", "congminh", "123456789Minh");
+            Connection conn = (Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe", "Luong", "");
             return conn;
-        } catch (Exception e) {
+            
+        } catch (ClassNotFoundException e) {
+            System.out.println("Connect DbXe InCorect ClassNotFoundException" + e.getMessage());
+            return null;
+        } catch (SQLException ex) {
+            System.out.println("Connect DbXe InCorect SQLException" + ex.getMessage());
             return null;
         }
-        
     }
-    
-       public static ObservableList<VeXe> getListVeXe() throws SQLException {
-      Connection conn = ConnectDbVeXe();
-      ObservableList<VeXe> listVX = FXCollections.observableArrayList();
-      try{
-          PreparedStatement ps = conn.prepareStatement("select * from quanlyvexe.vexe");
-          ResultSet rs = ps.executeQuery();
-          
-          while(rs.next()){
-              listVX.add(new VeXe(Integer.parseInt(rs.getString("MaVe")), 
-                       rs.getString("ChuyenXe"), rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"), rs.getString("BienSoXe")));
-          }        
-      }
-      catch(Exception e){  
-          System.out.println("Cannot Connect" + e.getMessage() );
-          
-      }  
-      return listVX;
-       }
+
+    public static ObservableList<VeXe> getListVeXe() throws SQLException {
+        Connection conn = ConnectDbVeXe();
+        ObservableList<VeXe> listVX = FXCollections.observableArrayList();
+        try {
+            PreparedStatement ps = conn.prepareStatement("select * from quanlyvexe.vexe");
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                listVX.add(new VeXe(Integer.parseInt(rs.getString("MaVe")),
+                        rs.getString("ChuyenXe"), rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"),
+                        rs.getDouble("GiaVe"), rs.getString("HoTenKH"), rs.getString("BienSoXe")));
+            }
+        } catch (Exception e) {
+            System.out.println("Cannot Connect" + e.getMessage());
+        }
+        return listVX;
+    }
 //       public List<VeXe> getVeXe(String kw) throws SQLException{
 //           List<VeXe> veXe= new ArrayList<>();
 //           try(Connection conn = ConnectDbVeXe()){
@@ -71,5 +73,5 @@ public class DV_VeXe {
 //           }
 //           return veXe;
 //       }
-       
+
 }

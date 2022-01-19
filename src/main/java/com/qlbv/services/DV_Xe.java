@@ -19,36 +19,11 @@ import javafx.collections.ObservableList;
  * @author USer
  */
 public class DV_Xe {
-//     <dependency>
-//            <groupId>org.openjfx</groupId>
-//            <artifactId>javafx-fxml</artifactId>
-//            <version>18-ea+9</version>
-//        </dependency>
-//    public List<Xe>getXe() throws SQLException{
-//        List<Xe> results = new ArrayList<>();
-//        try(Connection conn = jdbcUtils.getConn()){
-//            Statement stm = conn.createStatement();
-//            ResultSet rs = stm.executeQuery("SELECT * FROM Xe");
-//        
-//            while (rs.next()){
-//                Xe c = new Xe(rs.getString("MaChuyenXe"));
-//                results.add(c);
-//            }
-//        }
-//        return results;
-//    }
-//            }
-//        
-//        return results;
-//    }
-//    public static ObservableList<Xe> getConnection() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
    Connection conn = null;
    public static Connection ConnectDbXe() throws SQLException{
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","congminh","123456789Minh");
+            Connection conn =(Connection) DriverManager.getConnection("jdbc:mysql://localhost/quanlyvexe","Luong","");
             System.out.println("Connect DbXe Corect");
             return conn;
         } catch (ClassNotFoundException e){

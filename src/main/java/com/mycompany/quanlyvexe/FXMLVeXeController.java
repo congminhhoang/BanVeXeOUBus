@@ -8,13 +8,10 @@ import com.qlbv.pojo.VeXe;
 import com.qlbv.services.DV_VeXe;
 import java.net.URL;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Time;
 import java.util.ResourceBundle;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -27,6 +24,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.control.DatePicker;
 
 /**
  * FXML Controller class
@@ -34,9 +32,10 @@ import javafx.scene.input.MouseEvent;
  * @author congm
  */
 public class FXMLVeXeController implements Initializable {
-
-
-
+    
+    @FXML
+    private DatePicker txtDate;
+     
     @FXML
     private TextField txtChuyenXe;
     
@@ -75,14 +74,16 @@ public class FXMLVeXeController implements Initializable {
             pst.setString(1, txtMaVe.getText());
             pst.setString(2, txtHoten.getText());
             pst.setString(3, txtGio.getText());
-            pst.setString(4, txtChuyenXe.getText());
+//            pst.setDate(4, txt);
+            pst.setString(5, txtChuyenXe.getText());
             pst.execute();
-            Display();
-        }catch(Exception e){
+            loadTableData(sql);
+        }catch(SQLException e){
             System.out.println("Can't add data" + e.getMessage());
         }
-        
     }
+    
+    
     public void ChinhSua(ActionEvent event){
         try {
             conn = DV_VeXe.ConnectDbVeXe();
@@ -95,11 +96,13 @@ public class FXMLVeXeController implements Initializable {
                     Gio+"',ChuyenXe = '"+ChuyenXe+"' where MaVe= '"+maVe+"' ";
             pst = conn.prepareStatement(sql1);
             pst.execute();
-            Display();
+            loadTableData(null);
         } catch (SQLException ex) {
              System.out.println("Can't edit data" + ex.getMessage());
         }
     }
+    
+    
     public void Xoa(ActionEvent event) throws SQLException{
         try{
             conn = DV_VeXe.ConnectDbVeXe();
@@ -107,20 +110,15 @@ public class FXMLVeXeController implements Initializable {
         pst = conn.prepareStatement(sql);
         pst.setString(1, txtMaVe.getText());
         pst.execute();
-        Display();
+            loadTableData(sql);
         }
         catch(SQLException ex){
             System.out.println("Can't edit data" + ex.getMessage());
         }
     }
-    public void Display(){
-        this.loadTableView();
-        try {
-            this.loadTableData(null);
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
+    
+    
+   
     //lay khach hang voi cellclick 
     @FXML
     void getSelected (MouseEvent event){
@@ -136,48 +134,52 @@ public class FXMLVeXeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             Display();
-//            col_id.setCellValueFactory(new PropertyValueFactory<VeXe,Integer>("MaVe"));
-//..................................................................................
-//        
-//        try {
-//            listVeXe = DV_VeXe.getListVeXe();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//            table_ticket.setItems(listVeXe);
-//        try {
-//            this.loadTableData(null);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
     }
+    
+    
     private void loadTableView(){
         colID = new TableColumn("Mã Vé");
         colID.setCellValueFactory(new PropertyValueFactory("MaVe"));
+        this.colID = colID;
         
         colChuyenXe = new TableColumn("Chuyến Xe");
         colChuyenXe.setCellValueFactory(new PropertyValueFactory("ChuyenXe"));
+        this.colChuyenXe = colChuyenXe;
         
         colTime = new TableColumn("Giờ");
         colTime.setCellValueFactory(new PropertyValueFactory("GioKhoiHanh"));
+        this.colTime = colTime;
         
         colDate = new TableColumn("Ngày");
         colDate.setCellValueFactory(new PropertyValueFactory("NgayKhoiHanh"));
+        this.colDate = colDate;
         
         colCost = new TableColumn("Giá Vé");
         colCost.setCellValueFactory(new PropertyValueFactory("GiaVe"));
+        this.colCost = colCost;
         
         colName = new TableColumn("Tên KH");
         colName.setCellValueFactory(new PropertyValueFactory("HoTenKH"));
+        this.colName = colName;
         
         colbienSo = new TableColumn("Biển Số");
         colbienSo.setCellValueFactory(new PropertyValueFactory("BienSoXe"));
+        this.colbienSo = colbienSo;
         
         this.table_ticket.getColumns().addAll(colID,colChuyenXe,colTime,colDate,colCost,colName,colbienSo);
     }
+    
      private void loadTableData(String kw) throws SQLException{
          DV_VeXe vx = new DV_VeXe();
-         this.table_ticket.setItems(FXCollections.observableList(vx.getListVeXe()));
+         this.table_ticket.setItems(FXCollections.observableList(DV_VeXe.getListVeXe()));
      }  
+     
+      public void Display(){
+        this.loadTableView();
+        try {
+            this.loadTableData(null);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }    
 }
