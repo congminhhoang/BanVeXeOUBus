@@ -19,11 +19,6 @@ import javafx.collections.ObservableList;
  * @author USer
  */
 public class DV_Xe {
-//     <dependency>
-//            <groupId>org.openjfx</groupId>
-//            <artifactId>javafx-fxml</artifactId>
-//            <version>18-ea+9</version>
-//        </dependency>
 //    public List<Xe>getXe() throws SQLException{
 //        List<Xe> results = new ArrayList<>();
 //        try(Connection conn = jdbcUtils.getConn()){

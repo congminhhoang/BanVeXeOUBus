@@ -14,7 +14,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Time;
 import java.util.ResourceBundle;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
@@ -22,6 +21,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -50,7 +50,13 @@ public class FXMLVeXeController implements Initializable {
     private TextField txtMaVe;
     
     @FXML
+    private DatePicker txtDate;
+    
+    @FXML
     private TableView<VeXe> table_ticket;
+    
+    @FXML
+    private TextField txtKeyword;
     
     ObservableList<VeXe> listVeXe;
     int index = -1;
@@ -76,8 +82,9 @@ public class FXMLVeXeController implements Initializable {
             pst.setString(2, txtHoten.getText());
             pst.setString(3, txtGio.getText());
             pst.setString(4, txtChuyenXe.getText());
+            pst.setString(5, txtDate.toString());
             pst.execute();
-            Display();
+            this.loadTableData(null);
         }catch(Exception e){
             System.out.println("Can't add data" + e.getMessage());
         }
@@ -95,7 +102,7 @@ public class FXMLVeXeController implements Initializable {
                     Gio+"',ChuyenXe = '"+ChuyenXe+"' where MaVe= '"+maVe+"' ";
             pst = conn.prepareStatement(sql1);
             pst.execute();
-            Display();
+            this.loadTableData(null);
         } catch (SQLException ex) {
              System.out.println("Can't edit data" + ex.getMessage());
         }
@@ -107,7 +114,7 @@ public class FXMLVeXeController implements Initializable {
         pst = conn.prepareStatement(sql);
         pst.setString(1, txtMaVe.getText());
         pst.execute();
-        Display();
+        this.loadTableData(null);
         }
         catch(SQLException ex){
             System.out.println("Can't edit data" + ex.getMessage());
@@ -120,7 +127,8 @@ public class FXMLVeXeController implements Initializable {
         } catch (SQLException ex) {
             Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }    
+    } 
+   
     //lay khach hang voi cellclick 
     @FXML
     void getSelected (MouseEvent event){
@@ -136,21 +144,14 @@ public class FXMLVeXeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             Display();
-//            col_id.setCellValueFactory(new PropertyValueFactory<VeXe,Integer>("MaVe"));
-//..................................................................................
-//        
-//        try {
-//            listVeXe = DV_VeXe.getListVeXe();
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//            table_ticket.setItems(listVeXe);
-//        try {
-//            this.loadTableData(null);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
-//        }
-//    }
+            this.txtKeyword.textProperty().addListener((evt) ->{
+                try {
+                    this.loadTableSearch(this.txtKeyword.getText());
+                } catch (SQLException ex) {
+                    Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
+
     }
     private void loadTableView(){
         colID = new TableColumn("Mã Vé");
@@ -179,5 +180,9 @@ public class FXMLVeXeController implements Initializable {
      private void loadTableData(String kw) throws SQLException{
          DV_VeXe vx = new DV_VeXe();
          this.table_ticket.setItems(FXCollections.observableList(vx.getListVeXe()));
-     }  
+     }
+     private void loadTableSearch(String kw) throws SQLException{
+         DV_VeXe vx = new DV_VeXe();
+         this.table_ticket.setItems(FXCollections.observableList(vx.getVeXe(kw)));
+     } 
 }

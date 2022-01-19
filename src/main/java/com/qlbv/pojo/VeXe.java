@@ -19,8 +19,6 @@ public class VeXe {
     private double giaVe;
     private String hoTenKH;
     private String bienSoXe;
-//    private String tenNV;
-//    private int maNV;
 
     /**
      * @return the maVe
@@ -106,33 +104,6 @@ public class VeXe {
         this.hoTenKH = hotenKH;
     }
 
-//    /**
-//     * @return the tenNV
-//     */
-//    public String getTenNV() {
-//        return tenNV;
-//    }
-//
-//    /**
-//     * @param tenNV the tenNV to set
-//     */
-//    public void setTenNV(String tenNV) {
-//        this.tenNV = tenNV;
-//    }
-//
-//    /**
-//     * @return the maNV
-//     */
-//    public int getMaNV() {
-//        return maNV;
-//    }
-//
-//    /**
-//     * @param maNV the maNV to set
-//     */
-//    public void setMaNV(int maNV) {
-//        this.maNV = maNV;
-//    }
     public VeXe(){
         
     }
@@ -145,8 +116,6 @@ public class VeXe {
         this.giaVe = giaVe;
         this.hoTenKH = hotenKH;
         this.bienSoXe = bienSo;
-//        this.tenNV = tenNV;
-//        this.maNV = maNV;
     }
 
     /**

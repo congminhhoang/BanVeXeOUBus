@@ -52,24 +52,24 @@ public class DV_VeXe {
       }  
       return listVX;
        }
-//       public List<VeXe> getVeXe(String kw) throws SQLException{
-//           List<VeXe> veXe= new ArrayList<>();
-//           try(Connection conn = ConnectDbVeXe()){
-//               String sql = "SELECT * FROM quanlyvexe.vexe";
-//               if(kw != null && !kw.isEmpty())
-//                   sql += "WHERE maVe like concat('%', ?, '%')";
-//               PreparedStatement stm = conn.prepareStatement(sql);
-//               if(kw != null && !kw.isEmpty())
-//                   stm.setString(1, kw);
-//               
-//               ResultSet rs = stm.executeQuery();
-//               while(rs.next()){
-//                   VeXe q = new VeXe(Integer.parseInt(rs.getString("MaVe")), rs.getString("ChuyenXe"), 
-//                      rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"),
-//                      rs.getString("BienSoXe"));
-//                   veXe.add(q);}
-//           }
-//           return veXe;
-//       }
+       public List<VeXe> getVeXe(String kw) throws SQLException{
+           List<VeXe> veXe= new ArrayList<>();
+           try(Connection conn = ConnectDbVeXe()){
+               String sql = "SELECT * FROM quanlyvexe.vexe";
+               if(kw != null && !kw.isEmpty())
+                   sql += "WHERE ChuyenXe like concat('%',?,'%')";
+               PreparedStatement stm = conn.prepareStatement(sql);
+               if(kw != null && !kw.isEmpty())
+                   stm.setString(1, kw);
+               
+               ResultSet rs = stm.executeQuery();
+               while(rs.next()){
+                   VeXe q = new VeXe(Integer.parseInt(rs.getString("MaVe")), rs.getString("ChuyenXe"), 
+                      rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"),
+                      rs.getString("BienSoXe"));
+                   veXe.add(q);}
+           }
+           return veXe;
+       }
        
 }
