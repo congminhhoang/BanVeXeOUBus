@@ -82,7 +82,6 @@ public class FXMLVeXeController implements Initializable {
             pst.setString(2, txtHoten.getText());
             pst.setString(3, txtGio.getText());
             pst.setString(4, txtChuyenXe.getText());
-            pst.setString(5, txtDate.toString());
             pst.execute();
             this.loadTableData(null);
         }catch(Exception e){

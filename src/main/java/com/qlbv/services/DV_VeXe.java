@@ -13,7 +13,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -71,5 +70,21 @@ public class DV_VeXe {
            }
            return veXe;
        }
-       
+       public VeXe GetVeXeByID(String MaVe) throws SQLException{
+            VeXe vx = null;
+            try(Connection conn = ConnectDbVeXe()){
+                PreparedStatement stm = conn.prepareCall("SELECT * FROM quanlyvexe.vexe WHERE MaVe = ?");
+                stm.setString(1, MaVe);
+                
+                ResultSet rs = stm.executeQuery();
+                
+                while(rs.next()){
+                    vx = new VeXe(Integer.parseInt(rs.getString("MaVe")), rs.getString("ChuyenXe"), 
+                      rs.getTime("GioKhoiHanh"), rs.getDate("NgayKhoiHanh"), rs.getDouble("GiaVe"), rs.getString("HoTenKH"),
+                      rs.getString("BienSoXe"));
+                    break;
+                }
+            }
+            return vx;
+       }
 }
