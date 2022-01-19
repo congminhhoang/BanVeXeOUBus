@@ -48,9 +48,25 @@ public class DV_Xe {
                        rs.getString("NoiDen"), rs.getString("BienSoXe"), 
                        rs.getDouble("GiaVe")));
            }
-       } catch (Exception e) {
+       } catch (SQLException e) {
        System.out.println("Cannot connect" + e.getMessage() );
        }
        return list;
    }
+   public Xe getXeByID(String MaChuyenXe) throws SQLException{
+       Xe xe = null;
+       try(Connection conn = ConnectDbXe()){
+            PreparedStatement stm = conn.prepareCall("SELECT * FROM quanlyvexe.xe WHERE MaChuyenXe = ?");
+                stm.setString(1, MaChuyenXe);
+                
+                ResultSet rs = stm.executeQuery();
+                while(rs.next()){
+                    xe = new Xe(rs.getString("MaChuyenXe"),
+                       rs.getString("ChuyenXe"), rs.getString("NoiDi"),
+                       rs.getString("NoiDen"), rs.getString("BienSoXe"), 
+                       rs.getDouble("GiaVe"));
+                }
+       }
+       return xe;
+   } 
 }

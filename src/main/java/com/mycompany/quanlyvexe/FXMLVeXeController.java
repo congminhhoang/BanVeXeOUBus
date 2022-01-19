@@ -19,6 +19,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -51,6 +52,9 @@ public class FXMLVeXeController implements Initializable {
     @FXML
     private TableView<VeXe> table_ticket;
     
+    @FXML
+    private TextField txtKeyword;
+    
     ObservableList<VeXe> listVeXe;
     int index = -1;
     Connection conn = null;
@@ -66,7 +70,7 @@ public class FXMLVeXeController implements Initializable {
     TableColumn colbienSo;
     
     
-    public void themKH(ActionEvent event){
+    public void themKH(ActionEvent event) throws SQLException{
         conn = DV_VeXe.ConnectDbVeXe();
         String sql = "insert into vexe (MaVe,HoTenKH,GioKhoiHanh,ChuyenXe)values(?,?,?,?)";
         try{
@@ -79,6 +83,8 @@ public class FXMLVeXeController implements Initializable {
             pst.execute();
             loadTableData(sql);
         }catch(SQLException e){
+            this.loadTableData(null);
+        }catch(Exception e){
             System.out.println("Can't add data" + e.getMessage());
         }
     }
@@ -97,6 +103,7 @@ public class FXMLVeXeController implements Initializable {
             pst = conn.prepareStatement(sql1);
             pst.execute();
             loadTableData(null);
+            this.loadTableData(null);
         } catch (SQLException ex) {
              System.out.println("Can't edit data" + ex.getMessage());
         }
@@ -111,13 +118,22 @@ public class FXMLVeXeController implements Initializable {
         pst.setString(1, txtMaVe.getText());
         pst.execute();
             loadTableData(sql);
+        this.loadTableData(null);
         }
         catch(SQLException ex){
             System.out.println("Can't edit data" + ex.getMessage());
         }
     }
-    
-    
+
+    public void Display(){
+        this.loadTableView();
+        try {
+            this.loadTableData(null);
+        } catch (SQLException ex) {
+            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    } 
+
    
     //lay khach hang voi cellclick 
     @FXML
@@ -134,6 +150,13 @@ public class FXMLVeXeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
             Display();
+            this.txtKeyword.textProperty().addListener((evt) ->{
+                try {
+                    this.loadTableSearch(this.txtKeyword.getText());
+                } catch (SQLException ex) {
+                    Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            });
     }
     
     
@@ -171,15 +194,11 @@ public class FXMLVeXeController implements Initializable {
     
      private void loadTableData(String kw) throws SQLException{
          DV_VeXe vx = new DV_VeXe();
-         this.table_ticket.setItems(FXCollections.observableList(DV_VeXe.getListVeXe()));
+         this.table_ticket.setItems(FXCollections.observableList(vx.getListVeXe()));
      }  
      
-      public void Display(){
-        this.loadTableView();
-        try {
-            this.loadTableData(null);
-        } catch (SQLException ex) {
-            Logger.getLogger(FXMLVeXeController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }    
+     private void loadTableSearch(String kw) throws SQLException{
+         DV_VeXe vx = new DV_VeXe();
+         this.table_ticket.setItems(FXCollections.observableList(vx.getVeXe(kw)));
+     } 
 }
